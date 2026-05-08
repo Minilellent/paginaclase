@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Mi Biblioteca de Steam </title>
+	<link rel="stylesheet" href="../estilo.css">
+	<script src="../script.js" type="text/javascript"></script>
+</head>
+
+<body id="inicio">
+	<header>
+		<h1> Mi Colección de Steam </h1>
+		
+		
+	</header>
+	<div class="contenedor-principal" id="contenedor-principal"></div>
+
+	<aside class="panel-filtros">
+
+		<div class="grupo-control">
+			<label for="buscador">Buscar título:</label>
+			<input type="text" id="buscador" placeholder="Ej:Hollow Knight">
+		</div>
+
+		<div class="grupo-control">
+			<label for="filtro-categoria">Categoría:</label>
+			<select id="filtro-categoria">
+				<option value="todos">Todas las categorías</option>
+				<option value="Acción">Acción</option>
+				<option value="RPG">RPG</option>
+				<option value="Indie">Indie</option>
+				<option value="Gestión">Gestión</option>
+				<option value="Idle">Idle</option>
+			</select>
+		</div>
+		<button id="btn-cargar">Actualizar Biblioteca</button>
+	</aside>
+
+	<main>
+		<section id="biblioteca">
+			<h2>Catálogo de Juegos</h2>
+			<div id="tarjetas-contenedor" class="grid-tarjetas">
+				<p class="mensaje-espera">Los juegos aparecerán aquí...</p>
+			</div>
+		</section>
+	</main>
+	</div>
+
+	<footer>
+		<!--Indica grupo de enlaces principales-->
+		<nav>
+			<a id="START" href="../index.html">Inicio</a>
+			<a id="START" href="despedida.html">Despedida</a>
+			<a id="START" href="#inicio">Volver arriba ↑</a>
+		</nav>
+	</footer>
+
+	<script src="script.js"></script>
+
+</body>
+</html>
