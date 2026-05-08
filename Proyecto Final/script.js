@@ -105,9 +105,13 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
 var x = canvas.width/2;
+var xb = canvas.width/2;
 var y = canvas.height-30;
+var yb = canvas.height-30;
 var dx = 2;
 var dy = -2;
+var dxb = 2;
+var dyb = -2;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
@@ -166,6 +170,14 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
+                }
+                if(score>=5){
+                    if(xb > b.x && xb < b.x+brickWidth && yb > b.y && yb < b.y+brickHeight) {
+                        dyb = -dyb;
+                        b.status = 0;
+                        score++;
+                
+                }
                     if(score == brickRowCount*brickColumnCount) {
                         alert("YOU WIN, CONGRATS!");
                         document.location.reload();
@@ -182,6 +194,15 @@ function drawBall() {
     ctx.fillStyle = "#00087c";
     ctx.fill();
     ctx.closePath();
+    
+}
+function drawsecondBall() {
+    ctx.beginPath();
+    ctx.arc(xb, yb, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#00087c";
+    ctx.fill();
+    ctx.closePath();
+    
 }
 function drawPaddle() {
     ctx.beginPath();
@@ -222,6 +243,9 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
     drawBall();
+    if(score>=5){
+        drawsecondBall();
+    }
     drawPaddle();
     drawScore();
     drawLives();
@@ -252,6 +276,19 @@ function draw() {
             }
         }
     }
+    if(score>=5){
+        if(xb + dxb > canvas.width-ballRadius || xb + dxb < ballRadius) {
+        dxb = -dxb;
+    }
+    if(yb + dyb < ballRadius) {
+        dyb = -dyb;
+    }
+    else if(yb + dyb > canvas.height-ballRadius) {
+        if(xb > paddleX && xb < paddleX + paddleWidth) {
+            dyb = -dyb;
+        }
+    }
+    }
     
     if(rightPressed && paddleX < canvas.width-paddleWidth) {
         paddleX += 7;
@@ -259,7 +296,10 @@ function draw() {
     else if(leftPressed && paddleX > 0) {
         paddleX -= 7;
     }
-    
+    if(score >= 5) {
+    xb += dxb;
+    yb += dyb;
+}
     x += dx;
     y += dy;
     requestAnimationFrame(draw);
