@@ -82,7 +82,7 @@
 	 </juego> 	 
 	 
    <juego categoria="Idle">
-          <titulo> Coockie Clicker </titulo>
+          <titulo> Cookie Clicker </titulo>
 		  <imagen>../imagenes/coockie.webp</imagen>
 		  <desarrollador> DashNet </desarrollador>
 		  <lanzamiento> 2021 </lanzamiento>
