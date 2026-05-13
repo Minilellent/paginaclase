@@ -129,6 +129,7 @@ input[type="text"], .fake-input, select{
     display: flex;
     justify-content: center;
     padding: 20px;
+    background-color: #12151A;
     border-radius: 4px;
     gap: 20px;
     color:whitesmoke;
