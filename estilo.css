@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
 
 
-
+/*Estilos Generales*/
 body{
     margin: 0;
     padding: 0;
@@ -14,6 +14,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #1b2838;
+    font-family: 'Inter', sans-serif;
     
 }
 h1{
@@ -23,173 +24,143 @@ h1{
     justify-content: center;
     align-items: center;
     font-family: 'Inter', sans-serif;
-    font-size: 48px;
+    font-size: clamp(24px,5vw,48px); /*Tamáño según pantalla*/
     background-color: #1b2838 ;
     color: whitesmoke;
-    
-
-
-
-    width: 100%;
-    margin: 0;
-    padding: 2% 0;
+    width:100%;
+    margin:0;
+    padding:20px 0;
+    text-align:center;
 }
+/*LOGIN (index.html)*/
+
 .box{
     background-color: #1b2838;
-    padding: 40px;
-    width: 650px; /* Ancho fijo para que no se estire raro */
+    padding: 30px;
+    width: 90%; 
+    max-width: 600px; /*Límite para escritorio*/
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    
-    /* Centrado en pantalla */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    /* Organización Vertical */
-    display: flex;
-    flex-direction: column;
+    margin:auto; /*Esto aprovecha flex de body para centrar vertical y horizontalmente*/
+    display:flex;
+    flex-direction:column;
     gap: 20px;
 }
 .box-top{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap:30px;
+    gap:20px;
+}
+
+/*En móviles , el logo y el login se apilan verticalmente*/
+@media(max-width: 600px){
+    .box-top{
+        flex-direction: column-reverse;
+        text-align:center;
+    }
+    .img-logo{
+        margin-bottom: 10px;
+    }
 }
 .inputs-column{
     display:flex;
     flex-direction: column;
     flex: 1;
     text-align: left;
+    width: 100%;
 }
 .Login, .password{
     color:whitesmoke;
-    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: bold ;
     text-transform: uppercase;
     margin-bottom: 5px;
     text-align: left;
 }
-.password{
-    margin-top: 15px;
-}
-input[type="text"], .fake-input{
+input[type="text"], .fake-input, select{
     background-color: #32353c;
-    border:none;
+    border:1px solid #171a21;
     border-radius: 2px;
     padding:12px;
     color: white;
-    font-family: sans-serif;
     width: 100%;
     box-sizing: border-box;
 }
-.fake-input{
-    margin-top:0;
-    color: #666;
-    cursor: default;
-}
 #START{
-    margin-top: 30px;
     align-self: center;
     background: linear-gradient(to right, #1999ff, #216bff);
     color: white;
     text-align: center;
-    padding: 15px 60px;
+    padding: 15px 40px;
     text-decoration: none;
     border-radius: 4px;
-    font-family: 'Inter', sans-serif;
     font-weight: bold;
-    font-size: 30px;
-    margin-top: 30px;
+    font-size: 24px;
+    transition: filter 0.3s;
 }
 #Start:hover{
-    filter:brightness(1.1);
+    filter:brightness(1.2);
 }
 .img-logo{
     
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover; /*evita que la imagen se deforme*/
     border: 3px solid #1999ff;
-    align-self:center;
-    margin-bottom: 20px;
-    object-fit: cover;
     
 
 }
-.abajo{
-    background-color: #1b2838;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    position:absolute;
-    top:91%;
+/*Texto informativo inferior*/
+.recuadros{
+    background-color: rgba(27, 40, 56, 0.9);
+    color: whitesmoke;
     text-align: center;
     width: 100%;
     margin: 0;
-    padding: 2% 0;
-    color: whitesmoke;
+    padding: 20px;
+    box-sizing: border-box; /*evita que desborde lateralmente*/
+    
 
 }
-/*MAIN*/
+/*Biblioteca (main.html)*/
 .contenedor-principal {
-    display: flex;
-    flex-direction:column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 0;
     max-width: 1200px;
-    margin: 0;
+    margin: 20px auto;
+    width: 95%;
 }
 
 .panel-filtros {
     display: flex;
-    color:whitesmoke;
-    flex-direction: row;
-    justify-content: space-between,5%;
-    align-items: flex-start;
+    justify-content: center;
     background-color: #171a21;
     padding: 20px;
     border-radius: 4px;
     gap: 20px;
+    color:whitesmoke;
 }
 
 .grupo-control{
     display: flex;
-    align-items: center;
-    gap:10px;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 200px;
 
 }
-
-input[type="text"],select{
-    background-color: #32353c;
-    border: 1px solid #000;
-    color:whitesmoke;
-    padding: 8px 12px;
-    border-radius: 2px;
+/*Que los juegos aprezcan dependen de este botón*/
+#btn-cargar{
+    display: none;
 }
-#biblioteca{
-    background-color: #171a21;
-    color:whitesmoke;
-}
-
 .grid-tarjetas {
     display: grid;
+    /*Ajuste automático de columnas: mínimo 250px, máximo 1 fracción*/
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 20px 0;
 }
-
 /* Estilo base para cada "cuadro" de juego */
-.tarjeta-ejemplo {
-    background-color: #2a475e;
-    border-radius: 4px;
-    padding: 15px;
-    transition: transform 0.3s; 
-}
-
 .tarjeta-juego {
     background-color: #2a475e; /* Azul oscuro Steam */
     border-radius: 4px;
@@ -197,54 +168,39 @@ input[type="text"],select{
     color: white;
     text-align: center;
     border-bottom: 3px solid #67c1f5;
+    transition: transform 0.2;
+    cursor: pointer;
 }
 
-.foto-placeholder {
-    background-color: #1b2838;
-    height: 150px;
-    margin-bottom: 10px;
-    border-radius: 2px;
-}
-
-.tarjeta-juego h3 {
-    font-size: 1.1em;
-    margin: 10px 0;
-}
-
-.tarjeta-juego .categoria {
-    color: #67c1f5;
-    font-size: 0.9em;
-}
+/*Pie de página*/
 footer {
     background-color: #171a21; /* El color casi negro de la interfaz de Steam */
     color: #afafaf;           /* Gris suave para el texto, menos agresivo que el blanco */
-    padding: 30px 0;          /* Espacio interno arriba y abajo */
-    width: 100%;              /* Que ocupe todo el ancho */
+    padding: 40px 20px;          /* Espacio interno arriba y abajo */
     text-align: center;       /* Centra el texto y los enlaces */
     margin-top: auto;         /* Empuja el footer al final si hay poco contenido */
     border-top: 1px solid #32353c; /* Una línea sutil para separarlo del resto */
 }
 
 /* Estilo para los enlaces dentro del footer */
-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-}
-
-footer a:hover {
-    color: #67c1f5; /* Azul claro al pasar el ratón */
-    text-decoration: underline;
-}
-
-footer p {
-    margin-bottom: 10px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+footer nav{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
 }
 
 
 /*ARKANOID*/
-canvas { background: whitesmoke; }
+#myCanvas {
+     background: #eee;
+     display:block;
+     margin:20px auto;
+     max-width:100%;
+     height:auto; 
+    
+    
+    }
+
+
+

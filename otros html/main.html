@@ -1,6 +1,7 @@
+<!--La estructura base se crea con la ayuda HTML:5-->
 <!DOCTYPE html>
 <html lang="es">
-
+<!--Aquí se enlaza con la hoja de estilo y js-->
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +12,20 @@
 
 <body id="inicio">
 	<header>
+		<!--Título de la página-->
 		<h1> Mi Colección de Steam </h1>
 		
 		
 	</header>
+	<!--División del cabecero de la página-->
 	<div class="contenedor-principal" id="contenedor-principal"></div>
-
+<!--Contenido relacionada de forma indirecta-->
 	<aside class="panel-filtros">
 
 		<div class="grupo-control">
 			<label for="buscador">Buscar título:</label>
 			<input type="text" id="buscador" placeholder="Ej:Hollow Knight">
 		</div>
-
 		<div class="grupo-control">
 			<label for="filtro-categoria">Categoría:</label>
 			<select id="filtro-categoria">
@@ -37,7 +39,7 @@
 		</div>
 		<button id="btn-cargar">Actualizar Biblioteca</button>
 	</aside>
-
+<!--Contenido principal de la página-->
 	<main>
 		<section id="biblioteca">
 			<h2>Catálogo de Juegos</h2>
